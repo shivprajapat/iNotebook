@@ -2,12 +2,13 @@ const connectToMongo = require("./db");
 const express = require("express");
 
 connectToMongo();
-app = express();
+const app = express();
 const port = 3000;
-app.get("/", (req, res) => {
-  res.send("Hello React");
-});
+
+// Available Routes
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/notes", require("./routes/notes"));
 
 app.listen(port, () => {
-  console.log(`iNotebook backend listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:${port}`);
 });
