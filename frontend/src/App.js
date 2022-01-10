@@ -4,8 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom"; import { Home } from './components/Home';
-import About from './components/About';
+} from "react-router-dom"; import { Home } from './Pages/Home';
+import About from './Pages/About';
 import NoteState from './context/notes/NoteState';
 
 function App() {

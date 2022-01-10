@@ -1,24 +1,16 @@
 import React from 'react'
-import { Button, Card, Col } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 const Noteitem = (props) => {
-  // const { note } = props;
+  const { note } = props;
 
   return (
-    <Col lg={3} md={6}>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
-
-    </Col>
+    <Card className='shadow-sm border-border-1 border-border-warning'>
+      <Card.Body>
+        <Card.Title>{note.title}</Card.Title>
+        <Card.Text>{note.description}</Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 
