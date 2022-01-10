@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -15,8 +15,8 @@ const Header = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-              <Nav.Link as={NavLink} to="/about">About</Nav.Link>
+              <Nav.Link as={NavLink} exact activeClassName="active" to="/">Home</Nav.Link>
+              <Nav.Link as={NavLink} activeClassName="active" to="/about">About</Nav.Link>
 
             </Nav>
             <Form className="d-flex">
