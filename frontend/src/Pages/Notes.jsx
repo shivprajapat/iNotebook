@@ -12,7 +12,7 @@ const Notes = () => {
       <h2>You Notes</h2>
       {notes.map((note) => {
         return (
-          <Col lg={3} md={6} className='mb-3' key={note} >
+          <Col lg={4} md={6} className='mb-3' key={note} >
             <Noteitem note={note} />
           </Col>
         )
