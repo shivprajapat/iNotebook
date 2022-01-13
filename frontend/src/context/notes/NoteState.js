@@ -5,7 +5,7 @@ const NoteState = (props) => {
   const notesInitial = [
     {
       "_id": "61d7114288da042c177e3dd0",
-      "user": "61d1c04577e3c24e02631827",
+      // "user": "61d1c04577e3c24e02631827",
       "title": "Hello Title update",
       "description": "Please wake up early update",
       "tag": "personal",
@@ -14,7 +14,7 @@ const NoteState = (props) => {
     },
     {
       "_id": "61d711b588da042c177e3ddd",
-      "user": "61d1c04577e3c24e02631827",
+      // "user": "61d1c04577e3c24e02631827",
       "title": "Hello Title",
       "description": "Please wake up early",
       "tag": "personal",
@@ -23,7 +23,7 @@ const NoteState = (props) => {
     },
     {
       "_id": "61d711b588da042c177e3ddf",
-      "user": "61d1c04577e3c24e02631827",
+      // "user": "61d1c04577e3c24e02631827",
       "title": "Hello Title",
       "description": "Please wake up early",
       "tag": "personal",
@@ -32,7 +32,7 @@ const NoteState = (props) => {
     },
     {
       "_id": "61d714da3198fe4e2adcedfa",
-      "user": "61d1c04577e3c24e02631827",
+      // "user": "61d1c04577e3c24e02631827",
       "title": "Hello Title",
       "description": "Please wake up early",
       "tag": "personal",
@@ -41,7 +41,7 @@ const NoteState = (props) => {
     },
     {
       "_id": "61d716f973729a8bde73b1fd",
-      "user": "61d1c04577e3c24e02631827",
+      // "user": "61d1c04577e3c24e02631827",
       "title": "Hello React",
       "description": "Code with Herry",
       "tag": "Youtube",
@@ -56,7 +56,7 @@ const NoteState = (props) => {
     console.log("Adding a new note")
     const note = {
       "_id": "61d716f973729a8bde73b1fd1234",
-      "user": "61d1c04577e3c24e02631827",
+      // "user": "61d1c04577e3c24e02631827",
       "title": title,
       "description": description,
       "tag": tag,
@@ -67,14 +67,15 @@ const NoteState = (props) => {
   }
 
   // Delete a Note
-  const deleteNote = () => {
-
+  const deleteNote = (id) => {
+    console.log('delete=> ', id);
+    const newNotes = notes.filter((note) => note._id !== id)
+    setNotes(newNotes);
   }
   // Edit a Note
-  const editNote = () => {
+  const editNote = (id, title, description, tag) => {
 
   }
-
   return (
     <NoteContext.Provider value={{ notes, setNotes, addNote, editNote, deleteNote }}>
       {props.children}

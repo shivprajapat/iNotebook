@@ -29,7 +29,7 @@ const AddNote = () => {
           <Form.Control type="text" name="description" onChange={onChange} />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={handleClick}>
-          Submit
+          Add Note
         </Button>
       </Form>
     </Col>

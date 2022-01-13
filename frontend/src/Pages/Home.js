@@ -4,7 +4,6 @@ import noteContext from '../context/notes/noteContext'
 import Notes from './Notes'
 export const Home = () => {
   const context = useContext(noteContext)
-  console.log(context);
   return (
     <section>
       <Container>
