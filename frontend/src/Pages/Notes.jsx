@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import noteContext from "../context/notes/noteContext"
 import Noteitem from '../components/Noteitem';
 import { Col, Row } from 'react-bootstrap';
@@ -7,7 +7,11 @@ import AddNote from '../components/AddNote';
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes } = context;
+  const { notes, getNotes } = context;
+  useEffect(() => {
+    getNotes()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <>
       <AddNote />
