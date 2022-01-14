@@ -6,7 +6,7 @@ const AddNote = () => {
   const context = useContext(noteContext);
   const { addNote } = context;
 
-  const [note, setNote] = useState({ title: "", description: "", tag: "default" })
+  const [note, setNote] = useState({ title: "", description: "", tag: "" })
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,6 +27,10 @@ const AddNote = () => {
         <Form.Group className="mb-3">
           <Form.Label>Description</Form.Label>
           <Form.Control type="text" name="description" onChange={onChange} />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Tag</Form.Label>
+          <Form.Control type="text" name="tag" onChange={onChange} />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={handleClick}>
           Add Note
