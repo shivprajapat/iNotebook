@@ -11,6 +11,8 @@ const AddNote = () => {
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    setNote({ title: "", description: "", tag: "" })
+
   }
 
   const onChange = (e) => {
@@ -22,17 +24,17 @@ const AddNote = () => {
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Title</Form.Label>
-          <Form.Control type="text" name="title" onChange={onChange} />
+          <Form.Control type="text" name="title" value={note.title} onChange={onChange} minLength={5} required />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Description</Form.Label>
-          <Form.Control type="text" name="description" onChange={onChange} />
+          <Form.Control type="text" name="description" value={note.description} onChange={onChange} minLength={5} required />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Tag</Form.Label>
-          <Form.Control type="text" name="tag" onChange={onChange} />
+          <Form.Control type="text" name="tag" value={note.tag} onChange={onChange} minLength={5} required />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={handleClick}>
+        <Button variant="primary" type="submit" onClick={handleClick} disabled={note.title.length < 5 || note.description.length < 5}>
           Add Note
         </Button>
       </Form>

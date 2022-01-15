@@ -19,17 +19,15 @@ const Notes = () => {
   const handleClose = () => setShow(false);
   const handleShow = (currentNote) => {
     setShow(true)
-    setNote({ etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
+    setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
   }
   const handleClick = (e) => {
-    console.log("Updating the note...", note)
-    e.preventDefault();
     editNote(note.id, note.etitle, note.edescription, note.etag)
+    setShow(false)
   }
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value })
   }
-
   return (
     <>
       <AddNote />
@@ -41,15 +39,15 @@ const Notes = () => {
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" name="etitle" value={note.etitle} onChange={onChange} />
+              <Form.Control type="text" name="etitle" value={note.etitle} onChange={onChange} minLength={5} required />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
-              <Form.Control type="text" name="edescription" value={note.edescription} onChange={onChange} />
+              <Form.Control type="text" name="edescription" value={note.edescription} onChange={onChange} minLength={5} required />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Tag</Form.Label>
-              <Form.Control type="text" name="etag" value={note.etag} onChange={onChange} />
+              <Form.Control type="text" name="etag" value={note.etag} onChange={onChange} minLength={5} required />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -57,7 +55,7 @@ const Notes = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClick}>
+          <Button variant="primary" onClick={handleClick} disabled={note.etitle.length < 5 || note.edescription.length < 5}>
             Update Note
           </Button>
         </Modal.Footer>
@@ -66,6 +64,9 @@ const Notes = () => {
       <Col lg={12} className='mx-auto shadow mt-5 p-4 rounded-lg'>
         <h2>You Notes</h2>
         <Row>
+          {
+            notes.length === 0 && 'No notes to display'
+          }
           {notes.map((note) => {
             return (
               <Col lg={4} md={6} className='mb-3' key={note} >
