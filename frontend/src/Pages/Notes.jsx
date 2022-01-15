@@ -7,7 +7,7 @@ import AddNote from '../components/AddNote';
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, getNotes } = context;
+  const { notes, getNotes, editNote } = context;
   useEffect(() => {
     getNotes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,6 +24,7 @@ const Notes = () => {
   const handleClick = (e) => {
     console.log("Updating the note...", note)
     e.preventDefault();
+    editNote(note.id, note.etitle, note.edescription, note.etag)
   }
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value })
