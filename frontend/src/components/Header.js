@@ -26,8 +26,8 @@ const Header = () => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button className='mx-1' variant="info">Login</Button>
-              <Button className='mx-1' variant="primary">Signup</Button>
+              <Button as={NavLink} to='/login' className='mx-1' variant="info">Login</Button>
+              <Button as={NavLink} to='/signup' className='mx-1' variant="primary">Signup</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

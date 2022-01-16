@@ -8,6 +8,8 @@ import {
 import About from './Pages/About';
 import NoteState from './context/notes/NoteState';
 import AlertPopup from './components/AlertPopup';
+import Login from './Pages/Login'
+import Signup from './Pages/Signup'
 
 function App() {
   return (
@@ -16,12 +18,10 @@ function App() {
         <Header />
         <AlertPopup message="This is amazing React Course" />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
       </Router>
     </NoteState>
