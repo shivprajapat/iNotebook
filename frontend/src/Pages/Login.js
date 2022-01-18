@@ -16,15 +16,9 @@ const Login = () => {
       body: JSON.stringify({ email: login.email, password: login.password })
     });
     const json = await response.json()
-    if (json.success) {
-      // Save the auth token and redirect
-      localStorage.setItem('token', json.auth.authtoken);
-      history.push('/')
-    }
-    else {
-      alert("Invalid credentials");
-    }
-
+    // Save the auth token and redirect
+    localStorage.setItem('token', json.authtoken);
+    history.push('/')
     console.log(json);
   }
   const onChange = (e) => {
