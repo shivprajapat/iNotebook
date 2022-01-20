@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import {
   BrowserRouter as Router,
@@ -12,16 +12,34 @@ import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 
 function App() {
+  const [alert, setAlert] = useState(null);
+
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
+
   return (
     <NoteState>
       <Router>
         <Header />
-        <AlertPopup message="This is amazing React Course" />
+        <AlertPopup alert={alert} />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/">
+            <Home showAlert={showAlert} />
+          </Route>
           <Route exact path="/about" component={About} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login">
+            <Login showAlert={showAlert} />
+          </Route>
+          <Route exact path="/signup">
+            <Signup showAlert={showAlert} />
+          </Route>
         </Switch>
       </Router>
     </NoteState>

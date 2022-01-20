@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container, Form, Button, Col } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = ({ showAlert }) => {
   const [signup, setsignUp] = useState({
     name: "", email: "", password: "", cpassword: ""
   })
@@ -22,9 +22,11 @@ const Signup = () => {
       // Save the auth token and redirect
       localStorage.setItem('token', json.authtoken);
       history.push('/')
+      showAlert("Account Created Successfully", 'success');
     }
     else {
-      alert("Invalid credentials");
+      showAlert("Invalid Details", 'danger');
+
     }
 
     console.log(json);

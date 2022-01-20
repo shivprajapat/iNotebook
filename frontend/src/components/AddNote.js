@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Button, Col, Form } from 'react-bootstrap'
 import noteContext from '../context/notes/noteContext';
 
-const AddNote = () => {
+const AddNote = ({ showAlert }) => {
   const context = useContext(noteContext);
   const { addNote } = context;
 
@@ -12,6 +12,7 @@ const AddNote = () => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
     setNote({ title: "", description: "", tag: "" })
+    showAlert("Added Successfully", 'success');
 
   }
 

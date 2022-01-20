@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container, Form, Button, Col } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
-const Login = () => {
+const Login = ({ showAlert }) => {
   const [login, setLogin] = useState({ email: "", password: "" })
   let history = useHistory();
 
@@ -17,9 +17,16 @@ const Login = () => {
     });
     const json = await response.json()
     // Save the auth token and redirect
-    localStorage.setItem('token', json.authtoken);
-    history.push('/')
-    console.log(json);
+    if (json.success) {
+      localStorage.setItem('token', json.authtoken);
+      history.push('/')
+      console.log(json);
+      showAlert("Account Created Successfully", 'success');
+    }
+    else {
+      showAlert("Invalid credentials", 'danger');
+    }
+
   }
   const onChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value })

@@ -5,7 +5,7 @@ import { Col, Row, Modal, Form, Button } from 'react-bootstrap';
 import AddNote from '../components/AddNote';
 
 
-const Notes = () => {
+const Notes = ({ showAlert }) => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
   useEffect(() => {
@@ -20,17 +20,19 @@ const Notes = () => {
   const handleShow = (currentNote) => {
     setShow(true)
     setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
+
   }
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag)
-    setShow(false)
+    setShow(false);
+    showAlert("Update Successfully", 'success');
   }
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value })
   }
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={showAlert} />
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Edit Note</Modal.Title>
@@ -70,7 +72,7 @@ const Notes = () => {
           {notes.map((note) => {
             return (
               <Col lg={4} md={6} className='mb-3' key={note} >
-                <Noteitem handleShow={handleShow} note={note} />
+                <Noteitem handleShow={handleShow} showAlert={showAlert} note={note} />
               </Col>
             )
           })}
