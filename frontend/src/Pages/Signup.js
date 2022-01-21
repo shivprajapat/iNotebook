@@ -37,6 +37,7 @@ const Signup = ({ showAlert }) => {
   return (
     <Container>
       <Col lg={8} className='mx-auto shadow mt-5 p-4 rounded-rounded-3'>
+        <h2 className='text-center'>Create an account to use iNotebook</h2>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Name</Form.Label>

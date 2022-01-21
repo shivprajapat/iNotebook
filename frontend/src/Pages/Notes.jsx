@@ -3,13 +3,20 @@ import noteContext from "../context/notes/noteContext"
 import Noteitem from '../components/Noteitem';
 import { Col, Row, Modal, Form, Button } from 'react-bootstrap';
 import AddNote from '../components/AddNote';
-
+import { useHistory } from 'react-router-dom'
 
 const Notes = ({ showAlert }) => {
   const context = useContext(noteContext);
+  let history = useHistory();
   const { notes, getNotes, editNote } = context;
+
   useEffect(() => {
-    getNotes()
+    if (localStorage.getItem('token')) {
+      getNotes();
+    }
+    else {
+      history.push('/login')
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
